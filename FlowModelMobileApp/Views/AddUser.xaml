@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FlowModelMobileApp.Views.AddUser">
+    <ContentPage.Content>
+        <StackLayout>
+         <Label Text=" Здесь вы можете добавить нового пользователя!" FontSize="25" TextColor="Crimson"/>
+         <Entry Keyboard="Text" x:Name="LoginText" Placeholder="Логин"></Entry>
+         <Entry Keyboard="Text" x:Name="PasswordText" Placeholder="Пароль"></Entry>
+         <Picker x:Name="RolePicker" Title="Роль" SelectedIndexChanged="RolePicker_OnSelectedIndexChanged_SelectedIndexChanged"/>
+         <Button Text="Добавить" x:Name="AddButton" Clicked="UserAdd" BackgroundColor="#80CBC4" WidthRequest="120" HorizontalOptions="Center"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

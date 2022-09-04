@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FlowModelMobileApp.Views.ResearcherPage"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms">
+<ContentPage.Content>
+        <ScrollView>
+        <StackLayout VerticalOptions="CenterAndExpand">
+                <StackLayout VerticalOptions="CenterAndExpand">
+                    <Picker x:Name="MaterialPicker" Title="Тип материала" SelectedIndexChanged="MaterialPicker_SelectedIndexChanged"/>
+            <syncfusion:SfDataGrid x:Name="PropsGrid" ItemsSource="{Binding Props} "  ColumnSizer="Star"
+            AutoGenerateColumns="True" BackgroundColor="#ffece9">
+                <syncfusion:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns">
+                    <syncfusion:GridTextColumn HeaderText="Название" 
+                                   MappingName="Name" />
+                    <syncfusion:GridTextColumn HeaderText="Единица измерения"
+                                   MappingName="Unit"  />
+                    <syncfusion:GridTextColumn HeaderText="Значение"
+                                   MappingName="Value"  />
+                </syncfusion:SfDataGrid.Columns>
+            </syncfusion:SfDataGrid>
+                </StackLayout>
+                <StackLayout VerticalOptions="CenterAndExpand">
+                    <Label Text="Геометрические параметры канала" FontAttributes="Bold"  />
+                    <Label Text="Ширина(м):" />
+                    <Entry x:Name="G_Width" Placeholder="Ширина(м)" Keyboard="Numeric" Text="0.25"  />
+                    <Label Text="Глубина(м):" />
+            <Entry x:Name="G_Depth" Placeholder="Глубина(м)" Keyboard="Numeric" Text="0.01" />
+                    <Label Text="Длина(м):" />
+            <Entry x:Name="G_Lenght" Placeholder="Длина(м)" Keyboard="Numeric" Text="9.5" />
+                    <Label Text="Варьируемые параметры канала" FontAttributes="Bold"  />
+                    <Label Text="Температура крышки(°C):" />
+                    <Entry x:Name="Cap_Temp" Placeholder="Температура крышки(°C)" Keyboard="Numeric" Text="150" />
+                    <Label Text="Скорость крышки(м/с):" />
+                    <Entry x:Name="Cap_Speed" Placeholder="Скорость крышки(м/с)" Keyboard="Numeric" Text="1.5"/>
+                    <Label Text="Параметры метода решения" FontAttributes="Bold"  />
+                    <Label Text="Шаг по длине канала(м):" />
+                    <Entry x:Name="Step" Placeholder="Шаг по длине канала(м)" Keyboard="Numeric" Text="0.1"/>
+                    <Button x:Name="StartSimulation" Text="Начать моделирование" Clicked="StartSimulation_Clicked"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

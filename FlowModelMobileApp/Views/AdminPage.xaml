@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xForms="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             x:Class="FlowModelMobileApp.Views.AdminPage">
+   <ContentPage.Content>
+      <ScrollView>
+         <StackLayout VerticalOptions="CenterAndExpand">
+            <StackLayout VerticalOptions="CenterAndExpand">
+               <Label Text="Добро пожаловать, Администратор!"/>
+               <Picker x:Name="ChoosenTable" Title="Таблица" SelectedIndexChanged="ChoosenTableChanged"/>
+               <xForms:SfDataGrid x:Name="ResultTable" ItemsSource="{Binding Props} "  ColumnSizer="Star"
+                                AutoGenerateColumns="True" BackgroundColor="#ffece9">
+               </xForms:SfDataGrid>
+            </StackLayout>
+            <StackLayout VerticalOptions="CenterAndExpand">
+               <Button Text="Добавить учетную запись" x:Name="AddUser" Clicked="AddUserButtonClick" BackgroundColor="#80CBC4" WidthRequest="300" HorizontalOptions="Center" ></Button>
+               <Label Text="Добавить новый Материал"></Label>
+               <Entry Keyboard="Text" x:Name="MaterialNameText" Placeholder="Название материала"></Entry>
+               <Button Text="Добавить" x:Name="AddButton" Clicked="MaterialAdd" BackgroundColor="#80CBC4" WidthRequest="120" HorizontalOptions="Center"></Button>
+               <Label Text="Добавить новое свойство"></Label>
+               <Entry Keyboard="Text" x:Name="PropNameText" Placeholder="Название свойства"></Entry>
+               <Entry Keyboard="Text" x:Name="UnitNameText" Placeholder="Единица измерения"></Entry>
+               <Picker x:Name="UnitType" Title="Тип" SelectedIndexChanged="UnitType_OnSelectedIndexChanged"/>
+               <Button Text="Добавить" x:Name="AddPropButton" Clicked="AddPropButton_OnClicked" BackgroundColor="#80CBC4" WidthRequest="120" HorizontalOptions="Center"></Button>
+               <Label Text="Добавить связь свойства и материала и его значение"></Label>
+               <Picker x:Name="LinkMaterial" Title="Материал"/>
+               <Picker x:Name="LinkProperties" Title="Свойство"/>
+               <Entry Keyboard="Text" x:Name="PropValue" Placeholder="Значение" ></Entry>
+               <Button Text="Добавить" x:Name="AddLinkButton" Clicked="AddLinkButton_OnClicked" BackgroundColor="#80CBC4" WidthRequest="120" HorizontalOptions="Center"></Button>
+               <Button Text="Очистить базу данных" x:Name="Delete" Clicked="Delete_Value" BackgroundColor="Red" WidthRequest="240" HorizontalOptions="Center"></Button>
+            </StackLayout>
+         </StackLayout>
+      </ScrollView>
+   </ContentPage.Content>
+</ContentPage>

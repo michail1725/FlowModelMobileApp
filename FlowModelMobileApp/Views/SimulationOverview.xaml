@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FlowModelMobileApp.Views.SimulationOverview"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+            xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms">
+<ContentPage.Content>
+    <ScrollView>
+        <StackLayout>
+            <StackLayout>
+                 <Label x:Name="CalcMem" Text="Затрачено памяти:" />
+                 <Label x:Name="CalcTime" Text="Затрачено времени:" />
+                <Label Text="Критериальные показатели объекта" />
+                <Label x:Name="PerfomanceLabel" Text="Производительность (кг/ч):" />
+                <Label x:Name="TemperatureLabel" Text="Температура продукта(°C):" />
+                    <Label x:Name="ViscosityLabel" Text="Вязкость продукта(Па*с):" />
+                </StackLayout>
+            <StackLayout>
+                <Label Text="Графическое представление изменения состояния объекта по длине канала" />
+                    <chart:SfChart HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="300">
+                        <chart:SfChart.Title>
+
+                            <chart:ChartTitle Text="Температура по длине канала"/>
+
+                        </chart:SfChart.Title>
+                        <chart:SfChart.ColorModel>
+                            <chart:ChartColorModel Palette="Natural" />
+                        </chart:SfChart.ColorModel>
+                        <chart:SfChart.PrimaryAxis>
+
+                            <chart:NumericalAxis x:Name="xTempAxis" Interval="0.5" ShowTrackballInfo = "true">
+                                <chart:NumericalAxis.Title>
+
+                                    <chart:ChartAxisTitle Text="Координата по длине канала, м"/>
+
+                                </chart:NumericalAxis.Title>
+                            </chart:NumericalAxis>
+                            
+                        </chart:SfChart.PrimaryAxis>
+
+                        <chart:SfChart.SecondaryAxis>
+
+                            <chart:NumericalAxis>
+                                <chart:NumericalAxis.Title>
+
+                                    <chart:ChartAxisTitle Text="Температура, °С"/>
+
+                                </chart:NumericalAxis.Title>
+                            </chart:NumericalAxis>
+
+                        </chart:SfChart.SecondaryAxis>
+                        <chart:LineSeries x:Name="T_Chart" ItemsSource ="{Binding MaterialCondition }" XBindingPath="x"
+	  					YBindingPath="t" />
+                        <chart:SfChart.ChartBehaviors>
+                            <chart:ChartTrackballBehavior LabelDisplayMode="NearestPoint" ShowLine="true">
+                                <chart:ChartTrackballBehavior.LabelStyle>
+                                    <chart:ChartTrackballLabelStyle BackgroundColor="#404041" />
+                                </chart:ChartTrackballBehavior.LabelStyle>
+                            </chart:ChartTrackballBehavior>
+                        </chart:SfChart.ChartBehaviors>
+                    </chart:SfChart>
+                    <chart:SfChart HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="300">
+                        
+                        <chart:SfChart.Title>
+
+                            <chart:ChartTitle Text="Вязкость по длине канала"/>
+
+                        </chart:SfChart.Title>
+                        
+                        <chart:SfChart.PrimaryAxis>
+
+                            <chart:NumericalAxis x:Name="xViscAxis" Interval="0.5" ShowTrackballInfo = "true">
+                                <chart:NumericalAxis.Title>
+
+                                    <chart:ChartAxisTitle Text="Координата по длине канала, м"/>
+
+                                </chart:NumericalAxis.Title>
+                            </chart:NumericalAxis>
+                            
+                        </chart:SfChart.PrimaryAxis>
+
+                        <chart:SfChart.SecondaryAxis>
+
+                            <chart:NumericalAxis >
+                                <chart:NumericalAxis.Title>
+
+                                    <chart:ChartAxisTitle Text="Вязкость, Па·с"/>
+
+                                </chart:NumericalAxis.Title>
+                            </chart:NumericalAxis>
+
+                        </chart:SfChart.SecondaryAxis>
+                        <chart:LineSeries x:Name="V_Chart" ItemsSource ="{Binding MaterialCondition }" XBindingPath="x" 
+	  					YBindingPath="eta">
+                        </chart:LineSeries>
+                        <chart:SfChart.ChartBehaviors>
+                            <chart:ChartTrackballBehavior LabelDisplayMode="NearestPoint" ShowLine="true">
+                                <chart:ChartTrackballBehavior.LabelStyle>
+                                    <chart:ChartTrackballLabelStyle BackgroundColor="#404041" />
+                                </chart:ChartTrackballBehavior.LabelStyle>
+                            </chart:ChartTrackballBehavior>
+                        </chart:SfChart.ChartBehaviors>
+                    </chart:SfChart >
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Результаты расчета параметров состояния объекта по длине канала:" />
+                    <syncfusion:SfDataGrid x:Name="ResultsGrid" ItemsSource="{Binding MaterialCondition } "  ColumnSizer="Star"
+            AutoGenerateColumns="True" BackgroundColor="#ffece9">
+                    <syncfusion:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns">
+                        <syncfusion:GridTextColumn HeaderText="Координата по длине канала, м" 
+                                   MappingName="x" />
+                        <syncfusion:GridTextColumn HeaderText="Температура, °С"
+                                   MappingName="t"  />
+                        <syncfusion:GridTextColumn HeaderText="Вязкость, Па·с"
+                                   MappingName="eta"  />
+                    </syncfusion:SfDataGrid.Columns>
+                </syncfusion:SfDataGrid>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage.Content>
+</ContentPage>

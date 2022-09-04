@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FlowModelMobileApp.MainPage" >
+
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+         <Label Text="FlowModel" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+       <Label Text="Авторизация" FontSize="Title" Padding="30,10,30,10"/>
+        <Entry Keyboard="Text" x:Name="LoginText" Placeholder="Логин"></Entry>
+        <Entry Keyboard="Text" x:Name="PasswordText" Placeholder="Пароль" IsPassword="True"></Entry>
+      <Button Text="Войти" x:Name="LoginButton" Clicked="LoginClicked" BackgroundColor="#80CBC4" WidthRequest="120" HorizontalOptions="Center"></Button>
+      <Image Source="https://sun9-76.userapi.com/impg/fBy_1hArJPIi9pC-NR9Ojg_IDyY9WJ6rg21E_Q/mNgYrRS_CCo.jpg?size=584x499&amp;quality=96&amp;sign=70622e54950ca6de449ab108d9fc6b1a&amp;type=album" Aspect="AspectFit" HorizontalOptions="Center"></Image>
+   </StackLayout>
+
+</ContentPage>
